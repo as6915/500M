@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سينما العقرب - أفلام مجانية بجودة عالية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #4b0082;
+            --dark: #0f0e17;
+            --light: #f5f5f5;
+            --accent: #ff3864;
+            --gold: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            color: var(--light);
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 80px;
+        }
+        
+        body:before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(15, 14, 23, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            font-size: 2.2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light);
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-switch:hover {
+            background: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 50px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #ddd;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.1rem;
+            padding-right: 60px;
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* Categories Section */
+        .categories {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+        
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active {
+            background: var(--accent);
+            font-weight: 700;
+        }
+        
+        .category-btn:hover {
+            background: var(--primary);
+        }
+        
+        /* Movies Section */
+        .section-title {
+            font-size: 2.2rem;
+            margin: 60px 0 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .movie-card {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .movie-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .movie-info {
+            padding: 15px;
+        }
+        
+        .movie-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .movie-rating {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        /* Video Player Modal */
+        .player-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .player-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .player-container {
+            width: 90%;
+            max-width: 900px;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .close-player {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+        
+        .video-container {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.95);
+            padding: 30px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: #aaa;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #ddd;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-film"></i>
+                    <h1>سينما العقرب</h1>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#" class="active">الرئيسية</a>
+                    <a href="#">الأفلام</a>
+                    <a href="#">المسلسلات</a>
+                    <a href="#">الأنمي</a>
+                    <a href="#">الكورية</a>
+                    <a href="#">العربية</a>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="lang-switch">
+                        <i class="fas fa-globe"></i>
+                        English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>أكبر مكتبة <span class="highlight">أفلام ومسلسلات</span> مجانية</h2>
+            <p>استمتع بمشاهدة أحدث الأفلام والمسلسلات بجودة عالية بدون إعلانات أو تسجيل دخول</p>
+            
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن فيلم أو مسلسل...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories -->
+    <section class="container">
+        <div class="categories">
+            <button class="category-btn active">الكل</button>
+            <button class="category-btn">أفلام</button>
+            <button class="category-btn">مسلسلات</button>
+            <button class="category-btn">عربية</button>
+            <button class="category-btn">أجنبية</button>
+            <button class="category-btn">كورية</button>
+            <button class="category-btn">أنمي</button>
+            <button class="category-btn">كرتون</button>
+            <button class="category-btn">أكشن</button>
+            <button class="category-btn">رعب</button>
+            <button class="category-btn">كوميدي</button>
+            <button class="category-btn">رومانسي</button>
+            <button class="category-btn">خيال علمي</button>
+        </div>
+    </section>
+    
+    <!-- Movies Section -->
+    <section class="container">
+        <h2 class="section-title">الأفلام الجديدة</h2>
+        
+        <div class="movies-grid" id="moviesGrid">
+            <!-- Movies will be loaded here by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Series Section -->
+    <section class="container">
+        <h2 class="section-title">المسلسلات الشائعة</h2>
+        
+        <div class="movies-grid" id="seriesGrid">
+            <!-- Series will be loaded here by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Anime Section -->
+    <section class="container">
+        <h2 class="section-title">أفضل الأنمي</h2>
+        
+        <div class="movies-grid" id="animeGrid">
+            <!-- Anime will be loaded here by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Video Player Modal -->
+    <div class="player-modal" id="playerModal">
+        <div class="player-container">
+            <div class="close-player" id="closePlayer">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="video-container">
+                <iframe id="moviePlayer" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 سينما العقرب. جميع الحقوق محفوظة.
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Language switch functionality
+        const langSwitch = document.querySelector('.lang-switch');
+        langSwitch.addEventListener('click', function() {
+            const currentLang = this.textContent.trim();
+            if(currentLang === 'English') {
+                this.innerHTML = '<i class="fas fa-globe"></i> العربية';
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+                document.querySelector('.logo h1').textContent = 'Scorpio Cinema';
+                document.querySelector('.hero h2').innerHTML = 'Largest <span class="highlight">Movies & TV Shows</span> Library';
+                document.querySelector('.hero p').textContent = 'Enjoy the latest movies and shows in HD quality without ads or login';
+                document.querySelector('.search-box input').placeholder = 'Search for a movie or show...';
+                document.querySelectorAll('.section-title')[0].textContent = 'New Movies';
+                document.querySelectorAll('.section-title')[1].textContent = 'Popular Series';
+                document.querySelectorAll('.section-title')[2].textContent = 'Top Anime';
+                document.querySelector('.footer .copyright').textContent = '© 2023 Scorpio Cinema. All rights reserved.';
+            } else {
+                this.innerHTML = '<i class="fas fa-globe"></i> English';
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                document.querySelector('.logo h1').textContent = 'سينما العقرب';
+                document.querySelector('.hero h2').innerHTML = 'أكبر مكتبة <span class="highlight">أفلام ومسلسلات</span> مجانية';
+                document.querySelector('.hero p').textContent = 'استمتع بمشاهدة أحدث الأفلام والمسلسلات بجودة عالية بدون إعلانات أو تسجيل دخول';
+                document.querySelector('.search-box input').placeholder = 'ابحث عن فيلم أو مسلسل...';
+                document.querySelectorAll('.section-title')[0].textContent = 'الأفلام الجديدة';
+                document.querySelectorAll('.section-title')[1].textContent = 'المسلسلات الشائعة';
+                document.querySelectorAll('.section-title')[2].textContent = 'أفضل الأنمي';
+                document.querySelector('.footer .copyright').textContent = '© 2023 سينما العقرب. جميع الحقوق محفوظة.';
+            }
+        });
+        
+        // Movie player functionality
+        const playerModal = document.getElementById('playerModal');
+        const moviePlayer = document.getElementById('moviePlayer');
+        const closePlayer = document.getElementById('closePlayer');
+        
+        closePlayer.addEventListener('click', function() {
+            playerModal.classList.remove('active');
+            moviePlayer.src = '';
+            document.body.style.overflow = '';
+        });
+        
+        // Load movies from API
+        const moviesGrid = document.getElementById('moviesGrid');
+        const seriesGrid = document.getElementById('seriesGrid');
+        const animeGrid = document.getElementById('animeGrid');
+        
+        // Sample movie data (in a real app, this would come from an API)
+        const moviesData = [
+            {
+                id: 'dune',
+                title: 'ديون',
+                year: '2021',
+                rating: '8.0',
+                poster: 'https://image.tmdb.org/t/p/w500/8gchw8D2eGqjq4vXqdCgy6wL4Pz.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'john-wick',
+                title: 'جون ويك 4',
+                year: '2023',
+                rating: '8.2',
+                poster: 'https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'avatar',
+                title: 'أفاتار 2',
+                year: '2022',
+                rating: '7.6',
+                poster: 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'oppenheimer',
+                title: 'أوبنهايمر',
+                year: '2023',
+                rating: '8.5',
+                poster: 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'the-batman',
+                title: 'باتمان',
+                year: '2022',
+                rating: '7.8',
+                poster: 'https://image.tmdb.org/t/p/w500/seyWFgGInaLqW7nOZvu0ZC95rtx.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'black-adam',
+                title: 'بلاك أدام',
+                year: '2022',
+                rating: '7.1',
+                poster: 'https://image.tmdb.org/t/p/w500/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'the-nun',
+                title: 'الراهبة 2',
+                year: '2023',
+                rating: '6.6',
+                poster: 'https://image.tmdb.org/t/p/w500/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg',
+                type: 'movie'
+            },
+            {
+                id: 'mission-impossible',
+                title: 'مهمة مستحيلة 7',
+                year: '2023',
+                rating: '7.7',
+                poster: 'https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg',
+                type: 'movie'
+            }
+        ];
+        
+        // Sample series data
+        const seriesData = [
+            {
+                id: 'the-last-of-us',
+                title: 'ذا لاست أوف أس',
+                year: '2023',
+                rating: '8.8',
+                poster: 'https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
+                type: 'series'
+            },
+            {
+                id: 'wednesday',
+                title: 'وينزداي',
+                year: '2022',
+                rating: '8.7',
+                poster: 'https://image.tmdb.org/t/p/w500/9PFonBhy4cQy7Jz20NpMygczOkv.jpg',
+                type: 'series'
+            },
+            {
+                id: 'house-of-the-dragon',
+                title: 'هاوس أوف ذا دراجون',
+                year: '2022',
+                rating: '8.5',
+                poster: 'https://image.tmdb.org/t/p/w500/etj8E2o0Bud0HkONVQPjyCkIvpv.jpg',
+                type: 'series'
+            },
+            {
+                id: 'peaky-blinders',
+                title: 'بيكي بليندرز',
+                year: '2013',
+                rating: '8.5',
+                poster: 'https://image.tmdb.org/t/p/w500/6PX0r5TRRU5y0jZ70y1OtbLYmoD.jpg',
+                type: 'series'
+            },
+            {
+                id: 'stranger-things',
+                title: 'سترينجر ثينجز',
+                year: '2016',
+                rating: '8.7',
+                poster: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
+                type: 'series'
+            },
+            {
+                id: 'the-witcher',
+                title: 'ذا ويتشر',
+                year: '2019',
+                rating: '8.0',
+                poster: 'https://image.tmdb.org/t/p/w500/7vjaCdMw15FEbXyLQTVa04URsPm.jpg',
+                type: 'series'
+            },
+            {
+                id: 'lupin',
+                title: 'لوبين',
+                year: '2021',
+                rating: '7.9',
+                poster: 'https://image.tmdb.org/t/p/w500/6j7UaBQbG9oQbTqk1J7Q0N6t6qM.jpg',
+                type: 'series'
+            },
+            {
+                id: 'the-mandalorian',
+                title: 'ذا ماندالوريان',
+                year: '2019',
+                rating: '8.5',
+                poster: 'https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg',
+                type: 'series'
+            }
+        ];
+        
+        // Sample anime data
+        const animeData = [
+            {
+                id: 'attack-on-titan',
+                title: 'هجوم العمالقة',
+                year: '2013',
+                rating: '9.1',
+                poster: 'https://image.tmdb.org/t/p/w500/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'demon-slayer',
+                title: 'دييمون سلاير',
+                year: '2019',
+                rating: '8.7',
+                poster: 'https://image.tmdb.org/t/p/w500/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'naruto',
+                title: 'ناروتو',
+                year: '2002',
+                rating: '8.4',
+                poster: 'https://image.tmdb.org/t/p/w500/vauCEnR7CiyBDzRCeElKkCaXIYu.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'one-piece',
+                title: 'ون بيس',
+                year: '1999',
+                rating: '8.6',
+                poster: 'https://image.tmdb.org/t/p/w500/4Mt7WHox67uJ1yErwTBFcV8KWgG.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'death-note',
+                title: 'ديث نوت',
+                year: '2006',
+                rating: '8.6',
+                poster: 'https://image.tmdb.org/t/p/w500/iigTJJskR1PcjjXqxdyJwVB3BoU.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'jujutsu-kaisen',
+                title: 'جوجوتسو كايسن',
+                year: '2020',
+                rating: '8.6',
+                poster: 'https://image.tmdb.org/t/p/w500/g1rK2nRXSidcMwNliWDIroWWGTn.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'tokyo-revengers',
+                title: 'طوكيو ريفينجرز',
+                year: '2021',
+                rating: '8.3',
+                poster: 'https://image.tmdb.org/t/p/w500/6J7RqA1q4Oz0j1GYlFmXa6Z4Q1b.jpg',
+                type: 'anime'
+            },
+            {
+                id: 'chainsaw-man',
+                title: 'تشاينسو مان',
+                year: '2022',
+                rating: '8.6',
+                poster: 'https://image.tmdb.org/t/p/w500/npdB6eFzizki0WaZ1OvKcJrWe97.jpg',
+                type: 'anime'
+            }
+        ];
+        
+        // Function to create movie cards
+        function createMovieCards(data, container) {
+            container.innerHTML = '';
+            data.forEach(item => {
+                const movieCard = document.createElement('div');
+                movieCard.className = 'movie-card';
+                movieCard.setAttribute('data-movie', item.id);
+                movieCard.setAttribute('data-type', item.type);
+                
+                movieCard.innerHTML = `
+                    <img src="${item.poster}" alt="${item.title}" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">${item.title}</h3>
+                        <div class="movie-meta">
+                            <span>${item.year}</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> ${item.rating}</span>
+                        </div>
+                    </div>
+                `;
+                
+                movieCard.addEventListener('click', function() {
+                    playMovie(item.id, item.type);
+                });
+                
+                container.appendChild(movieCard);
+            });
+        }
+        
+        // Initialize the movie grids
+        createMovieCards(moviesData, moviesGrid);
+        createMovieCards(seriesData, seriesGrid);
+        createMovieCards(animeData, animeGrid);
+        
+        // Movie sources - using direct streaming links
+        const movieSources = {
+            'dune': 'https://vidsrc.to/embed/movie/438631',
+            'john-wick': 'https://vidsrc.to/embed/movie/603692',
+            'avatar': 'https://vidsrc.to/embed/movie/76600',
+            'oppenheimer': 'https://vidsrc.to/embed/movie/872585',
+            'the-batman': 'https://vidsrc.to/embed/movie/414906',
+            'black-adam': 'https://vidsrc.to/embed/movie/436270',
+            'the-nun': 'https://vidsrc.to/embed/movie/968051',
+            'mission-impossible': 'https://vidsrc.to/embed/movie/575264',
+            'the-last-of-us': 'https://vidsrc.to/embed/tv/100088',
+            'wednesday': 'https://vidsrc.to/embed/tv/119051',
+            'house-of-the-dragon': 'https://vidsrc.to/embed/tv/94997',
+            'peaky-blinders': 'https://vidsrc.to/embed/tv/60574',
+            'stranger-things': 'https://vidsrc.to/embed/tv/66732',
+            'the-witcher': 'https://vidsrc.to/embed/tv/71912',
+            'lupin': 'https://vidsrc.to/embed/tv/96648',
+            'the-mandalorian': 'https://vidsrc.to/embed/tv/82856',
+            'attack-on-titan': 'https://vidsrc.to/embed/tv/1429',
+            'demon-slayer': 'https://vidsrc.to/embed/tv/85937',
+            'naruto': 'https://vidsrc.to/embed/tv/46260',
+            'one-piece': 'https://vidsrc.to/embed/tv/37854',
+            'death-note': 'https://vidsrc.to/embed/tv/1399',
+            'jujutsu-kaisen': 'https://vidsrc.to/embed/tv/95479',
+            'tokyo-revengers': 'https://vidsrc.to/embed/tv/120089',
+            'chainsaw-man': 'https://vidsrc.to/embed/tv/128839'
+        };
+        
+        // Play movie function
+        function playMovie(movieId, type) {
+            if(movieSources[movieId]) {
+                moviePlayer.src = movieSources[movieId];
+                playerModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                alert('عذراً، الفيلم غير متاح حالياً. جرب فيلماً آخر.');
+            }
+        }
+        
+        // Category filter functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // In a real app, this would filter the content
+                // For now, we'll just scroll to the relevant section
+                const category = this.textContent.trim();
+                if(category === 'أفلام') {
+                    window.scrollTo({
+                        top: document.querySelector('#moviesGrid').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                } else if(category === 'مسلسلات') {
+                    window.scrollTo({
+                        top: document.querySelector('#seriesGrid').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                } else if(category === 'أنمي') {
+                    window.scrollTo({
+                        top: document.querySelector('#animeGrid').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        const searchBtn = document.querySelector('.search-box button');
+        
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            if(query.length < 2) return;
+            
+            // Combine all data for search
+            const allData = [...moviesData, ...seriesData, ...animeData];
+            const results = allData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.year.includes(query)
+            );
+            
+            if(results.length > 0) {
+                // Create a temporary grid to show search results
+                const tempGrid = document.createElement('div');
+                tempGrid.className = 'movies-grid';
+                createMovieCards(results, tempGrid);
+                
+                // Show results in a modal or replace one of the sections
+                moviesGrid.innerHTML = '<h2 style="width:100%;text-align:center;">نتائج البحث</h2>';
+                moviesGrid.appendChild(tempGrid);
+                
+                window.scrollTo({
+                    top: moviesGrid.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            } else {
+                alert('لا توجد نتائج مطابقة للبحث');
+            }
+        }
+        
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') performSearch();
+        });
+    </script>
+</body>
+</html>
