@@ -36,49 +36,37 @@ footer { text-align:center; padding:4rem 2rem; background-color: rgba(10,10,10,0
 </header>
 <main>
 <section class="plans">
-<!-- Single VPS Plans -->
+<!-- 1GB VPS -->
 <div class="plan">
 <h2><i class="fas fa-server"></i> <span data-key="plan1-title">1 VPS</span></h2>
 <ul>
-<li><i class="fas fa-cpu"></i> <span data-key="plan1-1">1x2GHz 1GB RAM 40GB SSD</span></li>
+<li><i class="fas fa-cpu"></i> <span data-key="plan1-spec">1x2GHz 1GB RAM 40GB SSD</span></li>
 </ul>
 <button onclick="openWhatsApp('1 VPS')"><i class="fab fa-whatsapp"></i> <span data-key="plan1-btn">Book Now</span></button>
 </div>
+<!-- 2GB VPS -->
 <div class="plan">
 <h2><i class="fas fa-server"></i> <span data-key="plan2-title">2 VPS</span></h2>
 <ul>
-<li><i class="fas fa-cpu"></i> <span data-key="plan2-1">2x2GHz 2GB RAM 60GB SSD</span></li>
+<li><i class="fas fa-cpu"></i> <span data-key="plan2-spec">2x2GHz 2GB RAM 60GB SSD</span></li>
 </ul>
 <button onclick="openWhatsApp('2 VPS')"><i class="fab fa-whatsapp"></i> <span data-key="plan2-btn">Book Now</span></button>
 </div>
+<!-- 4GB VPS -->
 <div class="plan">
 <h2><i class="fas fa-server"></i> <span data-key="plan3-title">4 VPS</span></h2>
 <ul>
-<li><i class="fas fa-cpu"></i> <span data-key="plan3-1">4x2GHz 6GB RAM 120GB SSD</span></li>
+<li><i class="fas fa-cpu"></i> <span data-key="plan3-spec">4x2GHz 6GB RAM 120GB SSD</span></li>
 </ul>
 <button onclick="openWhatsApp('4 VPS')"><i class="fab fa-whatsapp"></i> <span data-key="plan3-btn">Book Now</span></button>
 </div>
+<!-- 32GB VPS -->
 <div class="plan">
 <h2><i class="fas fa-server"></i> <span data-key="plan4-title">32 VPS</span></h2>
 <ul>
-<li><i class="fas fa-cpu"></i> <span data-key="plan4-1">32x2GHz 64GB RAM 1TB SSD</span></li>
+<li><i class="fas fa-cpu"></i> <span data-key="plan4-spec">32x2GHz 64GB RAM 1TB SSD</span></li>
 </ul>
 <button onclick="openWhatsApp('32 VPS')"><i class="fab fa-whatsapp"></i> <span data-key="plan4-btn">Book Now</span></button>
-</div>
-<!-- Power Plan -->
-<div class="plan">
-<h2><i class="fas fa-gpu"></i> <span data-key="plan5-title">Power Plan</span></h2>
-<ul>
-<li><i class="fas fa-gpu"></i> <span data-key="plan5-1">GPU 1080Ti 8 vCPU 32GB RAM 240GB SSD</span></li>
-</ul>
-<p><i class="fas fa-tools"></i> <span data-key="plan5-desc">Hosting platforms installation available on request</span></p>
-<button onclick="openWhatsApp('Power Plan')"><i class="fab fa-whatsapp"></i> <span data-key="plan5-btn">Book Now</span></button>
-</div>
-<!-- Custom Plan -->
-<div class="plan">
-<h2><i class="fas fa-cogs"></i> <span data-key="plan6-title">Custom Plan</span></h2>
-<p><i class="fas fa-user-cog"></i> <span data-key="plan6-desc">Choose any specifications you want and we will prepare VPS according to your request</span></p>
-<button onclick="openWhatsApp('Custom Plan')"><i class="fab fa-whatsapp"></i> <span data-key="plan6-btn">Book Now</span></button>
 </div>
 </section>
 </main>
@@ -88,9 +76,10 @@ footer { text-align:center; padding:4rem 2rem; background-color: rgba(10,10,10,0
 <script>
 const whatsappNumber='+201028085788';
 function openWhatsApp(planName){const message=encodeURIComponent(`Hello interested in ${planName} please send details`);window.open(`https://wa.me/${whatsappNumber}?text=${message}`,'_blank');}
-const translations={en:{title:'Aqronix VPS',description:'Leading company in high performance VPS with distinguished reputation and deep expertise in hosting designed to meet needs of large advanced projects',plan1Title:'1 VPS',plan1_1:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'Book Now',plan2Title:'2 VPS',plan2_1:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'Book Now',plan3Title:'4 VPS',plan3_1:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'Book Now',plan4Title:'32 VPS',plan4_1:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'Book Now',plan5Title:'Power Plan',plan5_1:'GPU 1080Ti 8 vCPU 32GB RAM 240GB SSD',plan5Desc:'Hosting platforms installation available on request',plan5Btn:'Book Now',plan6Title:'Custom Plan',plan6Desc:'Choose any specifications you want and we will prepare VPS according to your request',plan6Btn:'Book Now',footer:'2025 Aqronix VPS All rights reserved'},ar:{title:'Aqronix VPS',description:'شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة',plan1Title:'1 VPS',plan1_1:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'احجز الآن',plan2Title:'2 VPS',plan2_1:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'احجز الآن',plan3Title:'4 VPS',plan3_1:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'احجز الآن',plan4Title:'32 VPS',plan4_1:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'احجز الآن',plan5Title:'خطة قوية',plan5_1:'GPU 1080Ti 8 vCPU 32GB RAM 240GB SSD',plan5Desc:'تنصيب منصات استضافة حسب الطلب',plan5Btn:'احجز الآن',plan6Title:'خطة مخصصة',plan6Desc:'اختر أي مواصفات وسنقوم بتحضير VPS حسب طلبك',plan6Btn:'احجز الآن',footer:'جميع الحقوق محفوظة 2025 Aqronix VPS'},ru:{title:'Aqronix VPS',description:'Ведущая компания по предоставлению высокопроизводительных VPS с отличной репутацией и глубоким опытом в хостинге, разработанная для удовлетворения потребностей крупных передовых проектов',plan1Title:'1 VPS',plan1_1:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'Забронировать',plan2Title:'2 VPS',plan2_1:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'Забронировать',plan3Title:'4 VPS',plan3_1:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'Забронировать',plan4Title:'32 VPS',plan4_1:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'Забронировать',plan5Title:'Мощный план',plan5_1:'GPU 1080Ti 8 vCPU 32GB RAM 240GB SSD',plan5Desc:'Установка платформ хостинга по запросу',plan5Btn:'Забронировать',plan6Title:'Пользовательский план',plan6Desc:'Выберите любые спецификации, и мы подготовим VPS согласно вашему запросу',plan6Btn:'Забронировать',footer:'Все права защищены 2025 Aqronix VPS'}};
+const translations={
+ en:{title:'Aqronix VPS',description:'Leading company in high performance VPS with distinguished reputation and deep expertise in hosting designed to meet needs of large advanced projects',plan1Title:'1 VPS',plan1Spec:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'Book Now',plan2Title:'2 VPS',plan2Spec:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'Book Now',plan3Title:'4 VPS',plan3Spec:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'Book Now',plan4Title:'32 VPS',plan4Spec:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'Book Now',footer:'2025 Aqronix VPS All rights reserved'},
+ ar:{title:'Aqronix VPS',description:'شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة',plan1Title:'1 VPS',plan1Spec:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'احجز الآن',plan2Title:'2 VPS',plan2Spec:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'احجز الآن',plan3Title:'4 VPS',plan3Spec:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'احجز الآن',plan4Title:'32 VPS',plan4Spec:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'احجز الآن',footer:'جميع الحقوق محفوظة 2025 Aqronix VPS'},
+ ru:{title:'Aqronix VPS',description:'Ведущая компания по предоставлению высокопроизводительных VPS с отличной репутацией и глубоким опытом в хостинге, разработанная для удовлетворения потребностей крупных передовых проектов',plan1Title:'1 VPS',plan1Spec:'1x2GHz 1GB RAM 40GB SSD',plan1Btn:'Забронировать',plan2Title:'2 VPS',plan2Spec:'2x2GHz 2GB RAM 60GB SSD',plan2Btn:'Забронировать',plan3Title:'4 VPS',plan3Spec:'4x2GHz 6GB RAM 120GB SSD',plan3Btn:'Забронировать',plan4Title:'32 VPS',plan4Spec:'32x2GHz 64GB RAM 1TB SSD',plan4Btn:'Забронировать',footer:'Все права защищены 2025 Aqronix VPS'}};
 let currentLang='en';
-function toggleLang(){const langs=Object.keys(translations);let idx=langs.indexOf(currentLang);idx=(idx+1)%langs.length;currentLang=langs[idx];document.querySelectorAll('[data-key]').forEach(el=>{const key=el.getAttribute('data-key').replace(/-/g,'_');el.innerText=translations[currentLang][key]})}const canvas=document.getElementById('particles'); const ctx=canvas.getContext('2d'); let particlesArray; canvas.width=window.innerWidth; canvas.height=window.innerHeight; class Particle{constructor(x,y,size,speedX,speedY){this.x=x;this.y=y;this.size=size;this.speedX=speedX;this.speedY=speedY}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width||this.x<0)this.speedX=-this.speedX;if(this.y>canvas.height||this.y<0)this.speedY=-this.speedY}draw(){ctx.fillStyle='#00ffff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill()}} function init(){particlesArray=[];for(let i=0;i<120;i++){let size=Math.random()*3+1;let x=Math.random()*canvas.width;let y=Math.random()*canvas.height;let speedX=(Math.random()*1)-0.5;let speedY=(Math.random()*1)-0.5;particlesArray.push(new Particle(x,y,size,speedX,speedY))}} function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=0;i<particlesArray.length;i++){particlesArray[i].update();particlesArray[i].draw()}requestAnimationFrame(animate)} init();animate(); window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;init()}); </script>
+function toggleLang(){const langs=Object.keys(translations);let idx=langs.indexOf(currentLang);idx=(idx+1)%langs.length;currentLang=langs[idx];document.querySelectorAll('[data-key]').forEach(el=>{const key=el.getAttribute('data-key').replace(/-/g,'_');el.innerText=translations[currentLang][key]})}const canvas=document.getElementById('particles'); const ctx=canvas.getContext('2d'); let particlesArray; canvas.width=window.innerWidth; canvas.height=window.innerHeight; class Particle{constructor(x,y,size,speedX,speedY){this.x=x;this.y=y;this.size=size;this.speedX=speedX
 
-</body>
-</html>
