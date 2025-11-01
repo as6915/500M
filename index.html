@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aqronix VPS</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #121212;
+        color: #fff;
+    }
+    header {
+        text-align: center;
+        padding: 2rem;
+        background-color: #1f1f1f;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #4fc3f7;
+    }
+    .plans {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .plan {
+        background-color: #1e1e1e;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 280px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        transition: transform 0.3s;
+    }
+    .plan:hover {
+        transform: translateY(-10px);
+    }
+    .plan h2 {
+        color: #4fc3f7;
+        margin-bottom: 1rem;
+    }
+    .plan p {
+        margin: 0.5rem 0;
+    }
+    .plan button {
+        margin-top: 1rem;
+        padding: 0.8rem 1.5rem;
+        background-color: #4fc3f7;
+        color: #121212;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .plan button:hover {
+        background-color: #29b6f6;
+    }
+    footer {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #1f1f1f;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+    .lang-toggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: #4fc3f7;
+        color: #121212;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1 id="site-title">Aqronix VPS</h1>
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
+</header>
+<main>
+    <section class="plans">
+        <div class="plan">
+            <h2 id="plan1-title">خطة البداية</h2>
+            <p id="plan1-desc">مثالية للمبتدئين، موارد محدودة.</p>
+            <p id="plan1-price">$5 / شهر</p>
+            <button onclick="openWhatsApp('خطة البداية')">اختر الآن</button>
+        </div>
+        <div class="plan">
+            <h2 id="plan2-title">خطة المحترف</h2>
+            <p id="plan2-desc">مناسبة للمشاريع الصغيرة والمتوسطة.</p>
+            <p id="plan2-price">$15 / شهر</p>
+            <button onclick="openWhatsApp('خطة المحترف')">اختر الآن</button>
+        </div>
+        <div class="plan">
+            <h2 id="plan3-title">خطة المميز</h2>
+            <p id="plan3-desc">للمشاريع الكبيرة والمطورين المحترفين.</p>
+            <p id="plan3-price">$30 / شهر</p>
+            <button onclick="openWhatsApp('خطة المميز')">اختر الآن</button>
+        </div>
+    </section>
+</main>
+<footer>
+    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
+</footer>
+<script>
+    const whatsappNumber = '+201028085788';function openWhatsApp(planName) {
+    const message = encodeURIComponent(`مرحبًا، مهتم بالخطة ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+}
+
+let isEnglish = false;
+function toggleLang() {
+    isEnglish = !isEnglish;
+    if(isEnglish) {
+        document.getElementById('site-title').innerText = 'Aqronix VPS';
+        document.getElementById('plan1-title').innerText = 'Starter Plan';
+        document.getElementById('plan1-desc').innerText = 'Ideal for beginners, limited resources.';
+        document.getElementById('plan1-price').innerText = '$5 / month';
+
+        document.getElementById('plan2-title').innerText = 'Pro Plan';
+        document.getElementById('plan2-desc').innerText = 'Perfect for small and medium projects.';
+        document.getElementById('plan2-price').innerText = '$15 / month';
+
+        document.getElementById('plan3-title').innerText = 'Premium Plan';
+        document.getElementById('plan3-desc').innerText = 'For large projects and professional developers.';
+        document.getElementById('plan3-price').innerText = '$30 / month';
+
+        document.querySelector('.lang-toggle').innerText = 'العربية';
+    } else {
+        document.getElementById('site-title').innerText = 'Aqronix VPS';
+        document.getElementById('plan1-title').innerText = 'خطة البداية';
+        document.getElementById('plan1-desc').innerText = 'مثالية للمبتدئين، موارد محدودة.';
+        document.getElementById('plan1-price').innerText = '$5 / شهر';
+
+        document.getElementById('plan2-title').innerText = 'خطة المحترف';
+        document.getElementById('plan2-desc').innerText = 'مناسبة للمشاريع الصغيرة والمتوسطة.';
+        document.getElementById('plan2-price').innerText = '$15 / شهر';
+
+        document.getElementById('plan3-title').innerText = 'خطة المميز';
+        document.getElementById('plan3-desc').innerText = 'للمشاريع الكبيرة والمطورين المحترفين.';
+        document.getElementById('plan3-price').innerText = '$30 / شهر';
+
+        document.querySelector('.lang-toggle').innerText = 'English';
+    }
+}
+
+</script>
+</body>
+</html>
