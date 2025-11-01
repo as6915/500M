@@ -1,9 +1,10 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aqronix VPS</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
     body {
         margin: 0;
@@ -31,6 +32,10 @@ header h1 {
     color: #00ffff;
     letter-spacing: 3px;
     text-shadow: 0 0 30px #00ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 header p {
@@ -41,20 +46,10 @@ header p {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
-}
-
-.lang-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #00ffff;
-    color: #0b0b0b;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 0 15px #00ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .plans {
@@ -78,6 +73,9 @@ header p {
     opacity: 0;
     transform: translateY(50px);
     animation: fadeSlide 1s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .plan:nth-child(1) { animation-delay: 0.2s; }
@@ -96,24 +94,30 @@ header p {
 .plan h2 {
     color: #00ffff;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .plan ul {
     list-style: none;
     padding: 0;
-    margin: 1rem 0;
+    margin: 0;
     color: #ccc;
     font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.plan ul li:hover {
-    color: #00ffff;
-    transition: 0.3s;
+.plan ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .plan button {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 1rem 2rem;
     background: linear-gradient(45deg, #00ffff, #00bfff);
     color: #0b0b0b;
@@ -126,6 +130,10 @@ header p {
     transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
     animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .plan button:hover {
@@ -145,6 +153,10 @@ footer {
     font-size: 1rem;
     color: #777;
     border-top: 2px solid #00ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 @media(max-width: 768px) {
@@ -158,80 +170,59 @@ footer {
 <body>
 <canvas id="particles"></canvas>
 <header>
-    <h1 id="title">Aqronix VPS</h1>
-    <p id="description">شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة، مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة.</p>
-    <button class="lang-toggle" onclick="toggleLang()">English</button>
+    <h1><i class="fas fa-server"></i>Aqronix VPS</h1>
+    <p><i class="fas fa-rocket"></i>Leading company in high performance VPS with distinguished reputation and deep expertise in hosting designed to meet needs of large advanced projects</p>
+    <button class="lang-toggle" onclick="toggleLang()"><i class="fas fa-globe"></i>Arabic</button>
 </header>
 <main>
     <section class="plans">
         <div class="plan">
-            <h2 id="plan1-title">VPS أداء عالي</h2>
-            <ul id="plan1-list">
-                <li>CPU: Intel Xeon E5 Series</li>
-                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
+            <h2><i class="fas fa-microchip"></i>High Performance VPS</h2>
+            <ul>
+                <li><i class="fas fa-cpu"></i>CPU Intel Xeon E5 Series</li>
+                <li><i class="fas fa-memory"></i>1x2GHz 1GB RAM 40GB SSD</li>
+                <li><i class="fas fa-memory"></i>2x2GHz 2GB RAM 60GB SSD</li>
+                <li><i class="fas fa-memory"></i>4x2GHz 6GB RAM 120GB SSD</li>
+                <li><i class="fas fa-memory"></i>6x2GHz 12GB RAM 160GB SSD</li>
             </ul>
-            <button onclick="openWhatsApp('VPS أداء عالي')" id="plan1-btn">احجز الآن</button>
+            <button onclick="openWhatsApp('High Performance VPS')"><i class="fab fa-whatsapp"></i>Book Now</button>
         </div>
         <div class="plan">
-            <h2 id="plan2-title">خطة قوية</h2>
-            <ul id="plan2-list">
-                <li>GPU 1080Ti</li>
-                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
+            <h2><i class="fas fa-gpu"></i>Power Plan</h2>
+            <ul>
+                <li><i class="fas fa-gpu"></i>GPU 1080Ti</li>
+                <li><i class="fas fa-microchip"></i>8 vCPU 32GB RAM 240GB SSD</li>
             </ul>
-            <p id="plan2-desc">متاح تنصيب منصات استضافة حسب الطلب</p>
-            <button onclick="openWhatsApp('خطة قوية')" id="plan2-btn">احجز الآن</button>
+            <p><i class="fas fa-tools"></i>Hosting platforms installation available on request</p>
+            <button onclick="openWhatsApp('Power Plan')"><i class="fab fa-whatsapp"></i>Book Now</button>
         </div>
         <div class="plan">
-            <h2 id="plan3-title">خطة مخصصة</h2>
-            <p id="plan3-desc">اختر أي مواصفات تريدها، وسنقوم بتحضير VPS حسب طلبك.</p>
-            <button onclick="openWhatsApp('خطة مخصصة')" id="plan3-btn">احجز الآن</button>
+            <h2><i class="fas fa-cogs"></i>Custom Plan</h2>
+            <p><i class="fas fa-user-cog"></i>Choose any specifications you want and we will prepare VPS according to your request</p>
+            <button onclick="openWhatsApp('Custom Plan')"><i class="fab fa-whatsapp"></i>Book Now</button>
         </div>
     </section>
 </main>
 <footer>
-    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
+    <i class="fas fa-copyright"></i> 2025 Aqronix VPS All rights reserved <i class="fas fa-server"></i>
 </footer>
 <script>
     const whatsappNumber = '+201028085788';
     function openWhatsApp(planName) {
-        const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
+        const message = encodeURIComponent(`Hello interested in ${planName} please send details`);
         window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-    }// Language toggle
-let isEnglish = false;
+    }let isArabic = false;
 function toggleLang() {
-    isEnglish = !isEnglish;
-    if(isEnglish) {
-        document.getElementById('title').innerText = 'Aqronix VPS';
-        document.getElementById('description').innerText = 'A leading company in high-performance VPS with a distinguished reputation and deep expertise in hosting, designed to meet the needs of large and advanced projects.';
-        document.getElementById('plan1-title').innerText = 'High-Performance VPS';
-        document.getElementById('plan1-list').innerHTML = `
-            <li>CPU: Intel Xeon E5 Series</li>
-            <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-            <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-            <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-            <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-        `;
-        document.getElementById('plan1-btn').innerText = 'Book Now';
-        document.getElementById('plan2-title').innerText = 'Power Plan';
-        document.getElementById('plan2-list').innerHTML = `
-            <li>GPU 1080Ti</li>
-            <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-        `;
-        document.getElementById('plan2-desc').innerText = 'Hosting platforms installation available on request';
-        document.getElementById('plan2-btn').innerText = 'Book Now';
-        document.getElementById('plan3-title').innerText = 'Custom Plan';
-        document.getElementById('plan3-desc').innerText = 'Choose any specifications you want, and we will prepare VPS according to your request.';
-        document.getElementById('plan3-btn').innerText = 'Book Now';
-        document.querySelector('.lang-toggle').innerText = 'العربية';
+    if(!isArabic){
+        document.getElementById('title').innerHTML = '<i class="fas fa-server"></i>Aqronix VPS';
+        document.getElementById('description').innerHTML = '<i class="fas fa-rocket"></i>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة';
+        document.querySelector('.lang-toggle').innerHTML = '<i class="fas fa-globe"></i>English';
+        isArabic = true;
     } else {
         location.reload();
     }
 }
 
-/* Particles Animation */
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let particlesArray;
@@ -240,56 +231,16 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 class Particle {
-    constructor(x, y, size, speedX, speedY) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.speedX = speedX;
-        this.speedY = speedY;
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-        if(this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-    }
-    draw() {
-        ctx.fillStyle = '#00ffff';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
+    constructor(x,y,size,speedX,speedY){this.x=x;this.y=y;this.size=size;this.speedX=speedX;this.speedY=speedY}
+    update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width||this.x<0)this.speedX=-this.speedX;if(this.y>canvas.height||this.y<0)this.speedY=-this.speedY}
+    draw(){ctx.fillStyle='#00ffff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill()}
 }
 
-function init() {
-    particlesArray = [];
-    for(let i=0; i<100; i++) {
-        let size = Math.random() * 3 + 1;
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        let speedX = (Math.random() * 1) - 0.5;
-        let speedY = (Math.random() * 1) - 0.5;
-        particlesArray.push(new Particle(x, y, size, speedX, speedY));
-    }
-}
-
-function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    for(let i=0; i<particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-    }
-    requestAnimationFrame(animate);
-}
-
+function init(){particlesArray=[];for(let i=0;i<100;i++){let size=Math.random()*3+1;let x=Math.random()*canvas.width;let y=Math.random()*canvas.height;let speedX=(Math.random()*1)-0.5;let speedY=(Math.random()*1)-0.5;particlesArray.push(new Particle(x,y,size,speedX,speedY))}}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=0;i<particlesArray.length;i++){particlesArray[i].update();particlesArray[i].draw()}requestAnimationFrame(animate)}
 init();
 animate();
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    init();
-});
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;init()});
 
 </script>
 </body>
