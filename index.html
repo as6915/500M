@@ -3,108 +3,224 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aqronix VPS</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body {
         margin: 0;
-        font-family: 'Montserrat', sans-serif;
-        background-color: #0b0b0b;
-        color: #ffffff;
-    }
-    header {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, #111111, #1a1a1a);
-        box-shadow: 0 6px 25px rgba(0,0,0,0.8);
-    }
-    header h1 {
-        margin: 0;
-        font-size: 3.2rem;
-        color: #00bcd4;
-        letter-spacing: 2px;
-        font-weight: 700;
-    }
-    header p {
-        font-size: 1.3rem;
-        color: #cccccc;
-        margin-top: 0.8rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(-45deg, #0b0b0b, #1a1a1a, #0d0d0d, #111111);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #fff;
+        overflow-x: hidden;
+    }@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+header {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: #00ffff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #00ffff;
+}
+
+header p {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-top: 1rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lang-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #00ffff;
+    color: #0b0b0b;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    padding: 4rem 2rem;
+}
+
+.plan {
+    background: rgba(20,20,20,0.8);
+    border: 2px solid #00ffff;
+    border-radius: 25px;
+    padding: 3rem 2rem;
+    width: 340px;
+    text-align: left;
+    transition: transform 0.5s, box-shadow 0.5s;
+    box-shadow: 0 0 20px #00ffff;
+    backdrop-filter: blur(10px);
+}
+
+.plan:hover {
+    transform: translateY(-20px) rotateX(5deg);
+    box-shadow: 0 0 40px #00ffff, 0 0 60px #00ffff;
+}
+
+.plan h2 {
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    color: #ccc;
+    font-size: 1.05rem;
+}
+
+.plan ul li {
+    margin: 0.6rem 0;
+}
+
+.plan button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #00ffff, #00bfff);
+    color: #0b0b0b;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px #00ffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00ffff, 0 0 35px #00bfff;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: rgba(10,10,10,0.9);
+    font-size: 1rem;
+    color: #777;
+    border-top: 2px solid #00ffff;
+}
+
+@media(max-width: 768px) {
     .plans {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 3rem;
-        padding: 4rem 2rem;
-        max-width: 1200px;
-        margin: auto;
+        flex-direction: column;
+        align-items: center;
     }
-    .plan {
-        background-color: #1c1c1c;
-        border-radius: 20px;
-        padding: 3rem 2rem;
-        box-shadow: 0 10px 35px rgba(0,0,0,0.7);
-        transition: transform 0.4s, box-shadow 0.4s;
+}
+
+</style>
+</head>
+<body>
+<header>
+    <h1>Aqronix VPS</h1>
+    <p>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة.</p>
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
+</header>
+<main>
+    <section class="plans">
+        <div class="plan">
+            <h2>VPS أداء عالي</h2>
+            <ul>
+                <li>CPU: Intel Xeon E5 Series</li>
+                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
+                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
+                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
+                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
+            </ul>
+            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
+        </div>
+        <div class="plan">
+            <h2>خطة قوية</h2>
+            <ul>
+                <li>GPU 1080Ti</li>
+                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
+            </ul>
+            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
+            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
+        </div>
+        <div class="plan">
+            <h2>طرق الدفع</h2>
+            <ul>
+                <li>Bybit</li>
+                <li>Vodafone Cash</li>
+                <li>وسنضيف طرق جديدة قريباً</li>
+            </ul>
+            <button onclick="openWhatsApp('الدفع')">تواصل عبر واتساب</button>
+        </div>
+    </section>
+</main>
+<footer>
+    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
+</footer>
+<script>
+    const whatsappNumber = '+201028085788';function openWhatsApp(planName) {
+    const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+}
+
+let isEnglish = false;
+function toggleLang() {
+    isEnglish = !isEnglish;
+    if(isEnglish) {
+        document.querySelector('header h1').innerText = 'Aqronix VPS';
+        document.querySelector('header p').innerText = 'A leading company in high-performance VPS with a distinguished reputation and deep expertise in hosting.';
+        const plans = document.querySelectorAll('.plan');
+        plans[0].querySelector('h2').innerText = 'High-Performance VPS';
+        plans[0].querySelector('ul').innerHTML = `
+            <li>CPU: Intel Xeon E5 Series</li>
+            <li>1x2GHz / 1GB RAM / 40GB SSD</li>
+            <li>2x2GHz / 2GB RAM / 60GB SSD</li>
+            <li>4x2GHz / 6GB RAM / 120GB SSD</li>
+            <li>6x2GHz / 12GB RAM / 160GB SSD</li>
+        `;
+        plans[1].querySelector('h2').innerText = 'Power Plan';
+        plans[1].querySelector('ul').innerHTML = `
+            <li>GPU 1080Ti</li>
+            <li>8 vCPU / 32GB RAM / 240GB SSD</li>
+        `;
+        plans[1].querySelector('p').innerText = 'Hosting platforms installation available on request';
+        plans[2].querySelector('h2').innerText = 'Payment Methods';
+        plans[2].querySelector('ul').innerHTML = `
+            <li>Bybit</li>
+            <li>Vodafone Cash</li>
+            <li>More methods coming soon</li>
+        `;
+        plans[2].querySelector('button').innerText = 'Contact via WhatsApp';
+        document.querySelector('.lang-toggle').innerText = 'العربية';
+    } else {
+        location.reload();
     }
-    .plan:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.85);
-    }
-    .plan h2 {
-        color: #00bcd4;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-    .plan p, .plan ul {
-        margin: 0.8rem 0;
-        font-size: 1.05rem;
-        color: #e0e0e0;
-    }
-    .plan ul {
-        list-style: none;
-        padding: 0;
-    }
-    .plan ul li {
-        margin: 0.6rem 0;
-    }
-    .plan button {
-        margin-top: 2rem;
-        padding: 1rem 2rem;
-        background-color: #00bcd4;
-        color: #0b0b0b;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 1.1rem;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-    .plan button:hover {
-        background-color: #00acc1;
-        transform: scale(1.05);
-    }
-    footer {
-        text-align: center;
-        padding: 3rem 2rem;
-        background-color: #1a1a1a;
-        font-size: 1rem;
-        color: #777777;
-    }
-    .lang-toggle {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: #00bcd4;
-        color: #0b0b0b;
-        border: none;
-        padding: 0.6rem 1.2rem;
-        border-radius: 12px;
-        cursor: pointer;
-        font-weight: 600;
-    }
-    @media(max-width: 768px) {
+}
+
+</script>
+</body>
+</html>    @media(max-width: 768px) {
         .plans {
             grid-template-columns: 1fr;
         }
