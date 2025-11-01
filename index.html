@@ -8,9 +8,9 @@
     body {
         margin: 0;
         font-family: 'Orbitron', sans-serif;
-        background: linear-gradient(-45deg, #0b0b0b, #1a1a1a, #0d0d0d, #111111);
+        background: linear-gradient(120deg, #0a0a0a, #1f1f1f, #0f0f0f, #111111);
         background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
+        animation: gradientBG 20s ease infinite;
         color: #fff;
         overflow-x: hidden;
     }@keyframes gradientBG {
@@ -21,16 +21,15 @@
 
 header {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     position: relative;
 }
 
 header h1 {
-    margin: 0;
     font-size: 4rem;
     color: #00ffff;
     letter-spacing: 3px;
-    text-shadow: 0 0 20px #00ffff;
+    text-shadow: 0 0 25px #00ffff;
 }
 
 header p {
@@ -40,6 +39,7 @@ header p {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.6;
 }
 
 .lang-toggle {
@@ -47,7 +47,7 @@ header p {
     top: 1rem;
     right: 1rem;
     background: #00ffff;
-    color: #0b0b0b;
+    color: #0a0a0a;
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: 12px;
@@ -57,28 +57,28 @@ header p {
 }
 
 .plans {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 3rem;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: auto;
 }
 
 .plan {
-    background: rgba(20,20,20,0.8);
+    background: rgba(30,30,30,0.85);
     border: 2px solid #00ffff;
-    border-radius: 25px;
+    border-radius: 30px;
     padding: 3rem 2rem;
-    width: 340px;
     text-align: left;
     transition: transform 0.5s, box-shadow 0.5s;
-    box-shadow: 0 0 20px #00ffff;
+    box-shadow: 0 0 25px #00ffff;
     backdrop-filter: blur(10px);
 }
 
 .plan:hover {
     transform: translateY(-20px) rotateX(5deg);
-    box-shadow: 0 0 40px #00ffff, 0 0 60px #00ffff;
+    box-shadow: 0 0 50px #00ffff, 0 0 80px #00ffff;
 }
 
 .plan h2 {
@@ -92,19 +92,96 @@ header p {
     padding: 0;
     margin: 1rem 0;
     color: #ccc;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 .plan ul li {
-    margin: 0.6rem 0;
+    margin: 0.7rem 0;
 }
 
 .plan button {
     margin-top: 2rem;
     padding: 1rem 2rem;
     background: linear-gradient(45deg, #00ffff, #00bfff);
-    color: #0b0b0b;
+    color: #0a0a0a;
     border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.15rem;
+    box-shadow: 0 0 20px #00ffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.plan button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #00ffff, 0 0 60px #00bfff;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: rgba(10,10,10,0.95);
+    font-size: 1rem;
+    color: #777;
+    border-top: 2px solid #00ffff;
+}
+
+@media(max-width: 768px) {
+    .plans {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+<body>
+<header>
+    <h1>Aqronix VPS</h1>
+    <p>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة، مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة.</p>
+</header>
+<main>
+    <section class="plans">
+        <div class="plan">
+            <h2>VPS أداء عالي</h2>
+            <ul>
+                <li>CPU: Intel Xeon E5 Series</li>
+                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
+                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
+                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
+                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
+            </ul>
+            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
+        </div>
+        <div class="plan">
+            <h2>خطة قوية</h2>
+            <ul>
+                <li>GPU 1080Ti</li>
+                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
+            </ul>
+            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
+            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
+        </div>
+        <div class="plan">
+            <h2>خطة مخصصة</h2>
+            <p>اختر أي مواصفات تريدها، وسنقوم بتحضير VPS حسب طلبك.</p>
+            <button onclick="openWhatsApp('خطة مخصصة')">احجز الآن</button>
+        </div>
+    </section>
+</main>
+<footer>
+    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
+</footer>
+<script>
+    const whatsappNumber = '+201028085788';
+    function openWhatsApp(planName) {
+        const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    }
+</script>
+</body>
+</html>    border: none;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 700;
