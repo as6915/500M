@@ -8,15 +8,16 @@
     body {
         margin: 0;
         font-family: 'Orbitron', sans-serif;
-        background: linear-gradient(120deg, #0a0a0a, #1f1f1f, #0f0f0f, #111111);
-        background-size: 400% 400%;
-        animation: gradientBG 20s ease infinite;
-        color: #fff;
+        background: #0b0b0b;
         overflow-x: hidden;
-    }@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+        color: #fff;
+    }canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 header {
@@ -29,7 +30,7 @@ header h1 {
     font-size: 4rem;
     color: #00ffff;
     letter-spacing: 3px;
-    text-shadow: 0 0 25px #00ffff;
+    text-shadow: 0 0 30px #00ffff;
 }
 
 header p {
@@ -47,7 +48,7 @@ header p {
     top: 1rem;
     right: 1rem;
     background: #00ffff;
-    color: #0a0a0a;
+    color: #0b0b0b;
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: 12px;
@@ -66,14 +67,25 @@ header p {
 }
 
 .plan {
-    background: rgba(30,30,30,0.85);
+    background: rgba(20,20,20,0.85);
     border: 2px solid #00ffff;
     border-radius: 30px;
     padding: 3rem 2rem;
     text-align: left;
-    transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 0 25px #00ffff;
     backdrop-filter: blur(10px);
+    transition: transform 0.5s, box-shadow 0.5s;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeSlide 1s forwards;
+}
+
+.plan:nth-child(1) { animation-delay: 0.2s; }
+.plan:nth-child(2) { animation-delay: 0.4s; }
+.plan:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeSlide {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .plan:hover {
@@ -95,15 +107,16 @@ header p {
     font-size: 1.1rem;
 }
 
-.plan ul li {
-    margin: 0.7rem 0;
+.plan ul li:hover {
+    color: #00ffff;
+    transition: 0.3s;
 }
 
 .plan button {
     margin-top: 2rem;
     padding: 1rem 2rem;
     background: linear-gradient(45deg, #00ffff, #00bfff);
-    color: #0a0a0a;
+    color: #0b0b0b;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -112,11 +125,17 @@ header p {
     box-shadow: 0 0 20px #00ffff;
     transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
+    animation: pulse 2s infinite;
 }
 
 .plan button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 40px #00ffff, 0 0 60px #00bfff;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px #00ffff; }
+    50% { box-shadow: 0 0 40px #00ffff, 0 0 60px #00bfff; }
 }
 
 footer {
@@ -137,36 +156,38 @@ footer {
 </style>
 </head>
 <body>
+<canvas id="particles"></canvas>
 <header>
-    <h1>Aqronix VPS</h1>
-    <p>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة، مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة.</p>
+    <h1 id="title">Aqronix VPS</h1>
+    <p id="description">شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة، مصممة لتلبية احتياجات المشاريع الكبيرة والمتطورة.</p>
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
 </header>
 <main>
     <section class="plans">
         <div class="plan">
-            <h2>VPS أداء عالي</h2>
-            <ul>
+            <h2 id="plan1-title">VPS أداء عالي</h2>
+            <ul id="plan1-list">
                 <li>CPU: Intel Xeon E5 Series</li>
                 <li>1x2GHz / 1GB RAM / 40GB SSD</li>
                 <li>2x2GHz / 2GB RAM / 60GB SSD</li>
                 <li>4x2GHz / 6GB RAM / 120GB SSD</li>
                 <li>6x2GHz / 12GB RAM / 160GB SSD</li>
             </ul>
-            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
+            <button onclick="openWhatsApp('VPS أداء عالي')" id="plan1-btn">احجز الآن</button>
         </div>
         <div class="plan">
-            <h2>خطة قوية</h2>
-            <ul>
+            <h2 id="plan2-title">خطة قوية</h2>
+            <ul id="plan2-list">
                 <li>GPU 1080Ti</li>
                 <li>8 vCPU / 32GB RAM / 240GB SSD</li>
             </ul>
-            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
-            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
+            <p id="plan2-desc">متاح تنصيب منصات استضافة حسب الطلب</p>
+            <button onclick="openWhatsApp('خطة قوية')" id="plan2-btn">احجز الآن</button>
         </div>
         <div class="plan">
-            <h2>خطة مخصصة</h2>
-            <p>اختر أي مواصفات تريدها، وسنقوم بتحضير VPS حسب طلبك.</p>
-            <button onclick="openWhatsApp('خطة مخصصة')">احجز الآن</button>
+            <h2 id="plan3-title">خطة مخصصة</h2>
+            <p id="plan3-desc">اختر أي مواصفات تريدها، وسنقوم بتحضير VPS حسب طلبك.</p>
+            <button onclick="openWhatsApp('خطة مخصصة')" id="plan3-btn">احجز الآن</button>
         </div>
     </section>
 </main>
@@ -178,299 +199,97 @@ footer {
     function openWhatsApp(planName) {
         const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
         window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-    }
-</script>
-</body>
-</html>    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 0 15px #00ffff;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.plan button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #00ffff, 0 0 35px #00bfff;
-}
-
-footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    background-color: rgba(10,10,10,0.9);
-    font-size: 1rem;
-    color: #777;
-    border-top: 2px solid #00ffff;
-}
-
-@media(max-width: 768px) {
-    .plans {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-</style>
-</head>
-<body>
-<header>
-    <h1>Aqronix VPS</h1>
-    <p>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة.</p>
-    <button class="lang-toggle" onclick="toggleLang()">English</button>
-</header>
-<main>
-    <section class="plans">
-        <div class="plan">
-            <h2>VPS أداء عالي</h2>
-            <ul>
-                <li>CPU: Intel Xeon E5 Series</li>
-                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-            </ul>
-            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>خطة قوية</h2>
-            <ul>
-                <li>GPU 1080Ti</li>
-                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-            </ul>
-            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
-            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>طرق الدفع</h2>
-            <ul>
-                <li>Bybit</li>
-                <li>Vodafone Cash</li>
-                <li>وسنضيف طرق جديدة قريباً</li>
-            </ul>
-            <button onclick="openWhatsApp('الدفع')">تواصل عبر واتساب</button>
-        </div>
-    </section>
-</main>
-<footer>
-    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
-</footer>
-<script>
-    const whatsappNumber = '+201028085788';function openWhatsApp(planName) {
-    const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-}
-
+    }// Language toggle
 let isEnglish = false;
 function toggleLang() {
     isEnglish = !isEnglish;
     if(isEnglish) {
-        document.querySelector('header h1').innerText = 'Aqronix VPS';
-        document.querySelector('header p').innerText = 'A leading company in high-performance VPS with a distinguished reputation and deep expertise in hosting.';
-        const plans = document.querySelectorAll('.plan');
-        plans[0].querySelector('h2').innerText = 'High-Performance VPS';
-        plans[0].querySelector('ul').innerHTML = `
+        document.getElementById('title').innerText = 'Aqronix VPS';
+        document.getElementById('description').innerText = 'A leading company in high-performance VPS with a distinguished reputation and deep expertise in hosting, designed to meet the needs of large and advanced projects.';
+        document.getElementById('plan1-title').innerText = 'High-Performance VPS';
+        document.getElementById('plan1-list').innerHTML = `
             <li>CPU: Intel Xeon E5 Series</li>
             <li>1x2GHz / 1GB RAM / 40GB SSD</li>
             <li>2x2GHz / 2GB RAM / 60GB SSD</li>
             <li>4x2GHz / 6GB RAM / 120GB SSD</li>
             <li>6x2GHz / 12GB RAM / 160GB SSD</li>
         `;
-        plans[1].querySelector('h2').innerText = 'Power Plan';
-        plans[1].querySelector('ul').innerHTML = `
+        document.getElementById('plan1-btn').innerText = 'Book Now';
+        document.getElementById('plan2-title').innerText = 'Power Plan';
+        document.getElementById('plan2-list').innerHTML = `
             <li>GPU 1080Ti</li>
             <li>8 vCPU / 32GB RAM / 240GB SSD</li>
         `;
-        plans[1].querySelector('p').innerText = 'Hosting platforms installation available on request';
-        plans[2].querySelector('h2').innerText = 'Payment Methods';
-        plans[2].querySelector('ul').innerHTML = `
-            <li>Bybit</li>
-            <li>Vodafone Cash</li>
-            <li>More methods coming soon</li>
-        `;
-        plans[2].querySelector('button').innerText = 'Contact via WhatsApp';
+        document.getElementById('plan2-desc').innerText = 'Hosting platforms installation available on request';
+        document.getElementById('plan2-btn').innerText = 'Book Now';
+        document.getElementById('plan3-title').innerText = 'Custom Plan';
+        document.getElementById('plan3-desc').innerText = 'Choose any specifications you want, and we will prepare VPS according to your request.';
+        document.getElementById('plan3-btn').innerText = 'Book Now';
         document.querySelector('.lang-toggle').innerText = 'العربية';
     } else {
         location.reload();
     }
 }
 
-</script>
-</body>
-</html>    @media(max-width: 768px) {
-        .plans {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
-</head>
-<body>
-<header>
-    <h1>Aqronix VPS</h1>
-    <p>شركة رائدة في تقديم VPS عالية الأداء مع سمعة متميزة وخبرة عميقة في مجال الاستضافة.</p>
-    <button class="lang-toggle" onclick="toggleLang()">English</button>
-</header>
-<main>
-    <section class="plans">
-        <div class="plan">
-            <h2>VPS أداء عالي</h2>
-            <ul>
-                <li>CPU: Intel Xeon E5 Series</li>
-                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-            </ul>
-            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>خطة قوية</h2>
-            <ul>
-                <li>GPU 1080Ti</li>
-                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-            </ul>
-            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
-            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>طرق الدفع</h2>
-            <ul>
-                <li>Bybit</li>
-                <li>Vodafone Cash</li>
-                <li>وسنضيف طرق جديدة قريباً</li>
-            </ul>
-            <button onclick="openWhatsApp('الدفع')">تواصل عبر واتساب</button>
-        </div>
-    </section>
-</main>
-<footer>
-    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
-</footer>
-<script>
-    const whatsappNumber = '+201028085788';function openWhatsApp(planName) {
-    const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-}
+/* Particles Animation */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particlesArray;
 
-let isEnglish = false;
-function toggleLang() {
-    isEnglish = !isEnglish;
-    if(isEnglish) {
-        document.querySelector('header h1').innerText = 'Aqronix VPS';
-        document.querySelector('header p').innerText = 'A leading company in high-performance VPS with a distinguished reputation and deep expertise in hosting.';
-        const plans = document.querySelectorAll('.plan');
-        plans[0].querySelector('h2').innerText = 'High-Performance VPS';
-        plans[0].querySelector('ul').innerHTML = `
-            <li>CPU: Intel Xeon E5 Series</li>
-            <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-            <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-            <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-            <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-        `;
-        plans[1].querySelector('h2').innerText = 'Power Plan';
-        plans[1].querySelector('ul').innerHTML = `
-            <li>GPU 1080Ti</li>
-            <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-        `;
-        plans[1].querySelector('p').innerText = 'Hosting platforms installation available on request';
-        plans[2].querySelector('h2').innerText = 'Payment Methods';
-        plans[2].querySelector('ul').innerHTML = `
-            <li>Bybit</li>
-            <li>Vodafone Cash</li>
-            <li>More methods coming soon</li>
-        `;
-        plans[2].querySelector('button').innerText = 'Contact via WhatsApp';
-        document.querySelector('.lang-toggle').innerText = 'العربية';
-    } else {
-        location.reload();
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+    constructor(x, y, size, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+        if(this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+    }
+    draw() {
+        ctx.fillStyle = '#00ffff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
     }
 }
 
-</script>
-</body>
-</html></style>
-</head>
-<body>
-<header>
-    <h1>Aqronix VPS</h1>
-    <p>شركة رائدة في تقديم VPS عالية الأداء، مع خبرة عميقة وسمعة محترمة في المجال.</p>
-    <button class="lang-toggle" onclick="toggleLang()">English</button>
-</header>
-<main>
-    <section class="plans">
-        <div class="plan">
-            <h2>VPS أداء عالي ⚡</h2>
-            <ul>
-                <li>CPU: Intel Xeon E5 Series</li>
-                <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-                <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-                <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-                <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-            </ul>
-            <button onclick="openWhatsApp('VPS أداء عالي')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>خطة قوية 🔸</h2>
-            <ul>
-                <li>GPU 1080Ti</li>
-                <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-            </ul>
-            <p>متاح تنصيب منصات استضافة حسب الطلب</p>
-            <button onclick="openWhatsApp('خطة قوية')">احجز الآن</button>
-        </div>
-        <div class="plan">
-            <h2>طرق الدفع ⚡</h2>
-            <ul>
-                <li>Bybit</li>
-                <li>Vodafone Cash</li>
-                <li>وسنضيف طرق جديدة قريباً</li>
-            </ul>
-            <button onclick="openWhatsApp('الدفع')">تواصل عبر واتساب</button>
-        </div>
-    </section>
-</main>
-<footer>
-    &copy; 2025 Aqronix VPS. جميع الحقوق محفوظة.
-</footer>
-<script>
-    const whatsappNumber = '+201028085788';function openWhatsApp(planName) {
-    const message = encodeURIComponent(`مرحبًا، مهتم بـ${planName} من فضلك أرسل لي التفاصيل المطلوبة.`);
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-}
-
-let isEnglish = false;
-function toggleLang() {
-    isEnglish = !isEnglish;
-    if(isEnglish) {
-        document.querySelector('header h1').innerText = 'Aqronix VPS';
-        document.querySelector('header p').innerText = 'A leading company in high-performance VPS, with deep expertise and a respected reputation in the field.';
-        const plans = document.querySelectorAll('.plan');
-        plans[0].querySelector('h2').innerText = 'High-Performance VPS ⚡';
-        plans[0].querySelector('ul').innerHTML = `
-            <li>CPU: Intel Xeon E5 Series</li>
-            <li>1x2GHz / 1GB RAM / 40GB SSD</li>
-            <li>2x2GHz / 2GB RAM / 60GB SSD</li>
-            <li>4x2GHz / 6GB RAM / 120GB SSD</li>
-            <li>6x2GHz / 12GB RAM / 160GB SSD</li>
-        `;
-        plans[1].querySelector('h2').innerText = 'Power Plan 🔸';
-        plans[1].querySelector('ul').innerHTML = `
-            <li>GPU 1080Ti</li>
-            <li>8 vCPU / 32GB RAM / 240GB SSD</li>
-        `;
-        plans[1].querySelector('p').innerText = 'Hosting platforms installation available on request';
-        plans[2].querySelector('h2').innerText = 'Payment Methods ⚡';
-        plans[2].querySelector('ul').innerHTML = `
-            <li>Bybit</li>
-            <li>Vodafone Cash</li>
-            <li>More methods coming soon</li>
-        `;
-        plans[2].querySelector('button').innerText = 'Contact via WhatsApp';
-        document.querySelector('.lang-toggle').innerText = 'العربية';
-    } else {
-        location.reload();
+function init() {
+    particlesArray = [];
+    for(let i=0; i<100; i++) {
+        let size = Math.random() * 3 + 1;
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let speedX = (Math.random() * 1) - 0.5;
+        let speedY = (Math.random() * 1) - 0.5;
+        particlesArray.push(new Particle(x, y, size, speedX, speedY));
     }
 }
+
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0; i<particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+    }
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+});
 
 </script>
 </body>
