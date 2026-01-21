@@ -1,86 +1,30 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aqronix VPS</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Tajawal:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-body { margin:0; font-family:'Orbitron',sans-serif; background:#0b0b0b; overflow-x:hidden; color:#fff; }
-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
-header { text-align:center; padding:6rem 2rem; display:flex; flex-direction:column; gap:1rem; align-items:center; backdrop-filter: blur(10px); }
-header h1 { font-size:4.5rem; color:#00ffff; letter-spacing:4px; text-shadow:0 0 40px #00ffff; display:flex; align-items:center; gap:1rem; }
-header p { font-size:1.7rem; color:#ccc; max-width:900px; line-height:1.6; display:flex; align-items:center; justify-content:center; gap:1rem; transition: all 0.5s ease; }
-.plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:3rem; padding:6rem 2rem; max-width:1400px; margin:auto; }
-.plan { background:rgba(20,20,20,0.8); border:2px solid #00ffff; border-radius:30px; padding:3rem 2rem; text-align:left; box-shadow:0 0 40px #00ffff; backdrop-filter: blur(20px); transition: transform 0.6s, box-shadow 0.6s; opacity:0; transform:translateY(60px); animation:fadeSlide 1s forwards; display:flex; flex-direction:column; gap:1rem; }
-.plan:hover { transform: translateY(-25px) rotateX(5deg) scale(1.05); box-shadow:0 0 80px #00ffff,0 0 120px #00bfff; }
-.plan h2 { color:#00ffff; font-size:2.2rem; display:flex; align-items:center; gap:0.5rem; text-shadow:0 0 15px #00ffff; }
-.plan ul { list-style:none; padding:0; margin:0; color:#ccc; font-size:1.2rem; display:flex; flex-direction:column; gap:0.7rem; }
-.plan ul li { display:flex; align-items:center; gap:0.5rem; }
-.plan button { margin-top:1.5rem; padding:1rem 2rem; background: linear-gradient(45deg,#00ffff,#00bfff); color:#0b0b0b; border:none; border-radius:30px; cursor:pointer; font-weight:700; font-size:1.2rem; box-shadow:0 0 35px #00ffff; transition: transform 0.3s, box-shadow 0.3s; width:100%; animation:pulse 2s infinite; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
-.plan button:hover { transform: scale(1.1); box-shadow:0 0 60px #00ffff,0 0 100px #00bfff; }
-@keyframes fadeSlide { to { opacity:1; transform:translateY(0); } }
-@keyframes pulse { 0%,100% { box-shadow:0 0 35px #00ffff; } 50% { box-shadow:0 0 60px #00ffff,0 0 100px #00bfff; } }
-footer { text-align:center; padding:4rem 2rem; background-color: rgba(10,10,10,0.95); font-size:1.1rem; color:#777; border-top:2px solid #00ffff; display:flex; align-items:center; justify-content:center; gap:1rem; }
-@media(max-width:768px) { .plans { grid-template-columns:1fr; } header h1 { font-size:3.5rem; } header p { font-size:1.3rem; } }
-</style>
+  <meta charset="UTF-8">
+  <title>OBX AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="particles"></canvas>
-<header>
-<h1><i class="fas fa-server"></i> Aqronix VPS</h1>
-<p>Leading company in high performance VPS with distinguished reputation and deep expertise in hosting designed to meet needs of large advanced projects</p>
-</header>
-<main>
-<section class="plans">
-<div class="plan">
-<h2><i class="fas fa-server"></i> 1 VPS</h2>
-<ul>
-<li><i class="fas fa-cpu"></i> 1x2GHz 1GB RAM 40GB SSD</li>
-</ul>
-<button onclick="openWhatsApp('1 VPS')"><i class="fab fa-whatsapp"></i> Book Now</button>
-</div>
-<div class="plan">
-<h2><i class="fas fa-server"></i> 2 VPS</h2>
-<ul>
-<li><i class="fas fa-cpu"></i> 2x2GHz 2GB RAM 60GB SSD</li>
-</ul>
-<button onclick="openWhatsApp('2 VPS')"><i class="fab fa-whatsapp"></i> Book Now</button>
-</div>
-<div class="plan">
-<h2><i class="fas fa-server"></i> 4 VPS</h2>
-<ul>
-<li><i class="fas fa-cpu"></i> 4x2GHz 6GB RAM 120GB SSD</li>
-</ul>
-<button onclick="openWhatsApp('4 VPS')"><i class="fab fa-whatsapp"></i> Book Now</button>
-</div>
-<div class="plan">
-<h2><i class="fas fa-server"></i> 32 VPS</h2>
-<ul>
-<li><i class="fas fa-cpu"></i> 32x2GHz 64GB RAM 1TB SSD</li>
-</ul>
-<button onclick="openWhatsApp('32 VPS')"><i class="fab fa-whatsapp"></i> Book Now</button>
-</div>
-</section>
-</main>
-<footer>
-<i class="fas fa-copyright"></i> 2025 Aqronix VPS All rights reserved <i class="fas fa-server"></i>
-</footer>
-<script>
-const whatsappNumber='+201028085788';
-function openWhatsApp(planName){
-const message=encodeURIComponent(`Hello interested in ${planName} please send details`);
-window.open(`https://wa.me/${whatsappNumber}?text=${message}`,'_blank');
-}
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particlesArray;
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-class Particle{constructor(x,y,size,speedX,speedY){this.x=x;this.y=y;this.size=size;this.speedX=speedX;this.speedY=speedY}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width||this.x<0)this.speedX=-this.speedX;if(this.y>canvas.height||this.y<0)this.speedY=-this.speedY}draw(){ctx.fillStyle='#00ffff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill()}}
-function init(){particlesArray=[];for(let i=0;i<120;i++){let size=Math.random()*3+1;let x=Math.random()*canvas.width;let y=Math.random()*canvas.height;let speedX=(Math.random()*1)-0.5;let speedY=(Math.random()*1)-0.5;particlesArray.push(new Particle(x,y,size,speedX,speedY))}}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=0;i<particlesArray.length;i++){particlesArray[i].update();particlesArray[i].draw()}requestAnimationFrame(animate)}
-init();animate();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;init()});
-</script>
+  <div id="bg"></div>
+
+  <div id="app">
+    <header>
+      <div class="brand">OBX AI</div>
+      <div class="active-model" id="activeModel"></div>
+    </header>
+
+    <main id="log"></main>
+
+    <div class="composer">
+      <div class="model-btn" id="modelBtn">Models</div>
+      <input id="txt" placeholder="Ask OBX AI anything..." />
+      <button id="send">Send</button>
+    </div>
+  </div>
+
+  <div id="models"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>

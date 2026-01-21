@@ -1,0 +1,124 @@
+*{box-sizing:border-box;font-family:Inter,Arial}
+body{margin:0;background:#05060a;color:#fff;overflow:hidden}
+
+#bg{
+  position:fixed;inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, #3b82f6 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #8b5cf6 0%, transparent 40%);
+  filter:blur(140px);opacity:.6;
+}
+
+#app{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+  backdrop-filter:blur(24px);
+}
+
+header{
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand{font-weight:800;letter-spacing:3px}
+
+.active-model{
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  font-size:12px;
+}
+
+#log{
+  flex:1;
+  padding:40px 24px;
+  overflow:auto;
+}
+
+.msg{
+  max-width:720px;
+  margin:16px auto;
+  padding:18px 20px;
+  border-radius:18px;
+  line-height:1.6;
+  animation:pop .2s ease;
+}
+
+.user{background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.ai{background:rgba(255,255,255,.08)}
+
+.composer{
+  display:flex;
+  gap:12px;
+  padding:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.35);
+}
+
+.composer input{
+  flex:1;
+  padding:16px 18px;
+  border-radius:14px;
+  border:none;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+
+.composer button,.model-btn{
+  padding:16px 20px;
+  border-radius:14px;
+  border:none;
+  background:#6366f1;
+  color:#fff;
+  cursor:pointer;
+}
+
+.model-btn{background:rgba(255,255,255,.12)}
+
+#models{
+  position:fixed;inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(10px);
+}
+
+#models .box{
+  width:420px;
+  background:#0b0d15;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.7);
+}
+
+.model-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  cursor:pointer;
+}
+
+.model-item:hover{background:#1a1f33}
+
+.icon{
+  width:32px;height:32px;
+  border-radius:10px;
+  background:#6366f1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+@keyframes pop{
+  from{opacity:0;transform:translateY(10px) scale(.98)}
+  to{opacity:1;transform:none}
+}
